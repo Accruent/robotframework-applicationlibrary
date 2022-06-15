@@ -10,80 +10,27 @@ robotframework-applicationlibrary
 Introduction
 --------------
 
-robotframework-applicationlibrary is a collection of libraries spanning GUI, REST API, SOAP API, Mobile, and Windows Desktop (WinAppDriver) automation using [Robot Framework](https://github.com/robotframework/robotframework).
-These libraries are extensions of existing libraries [SeleniumLibrary](https://github.com/robotframework/SeleniumLibrary), [Requests](https://github.com/bulkan/robotframework-requests), 
-[SudsLibrary](https://github.com/aljcalandra/robotframework-sudslibrary), and [AppiumLibrary](https://github.com/serhatbolsu/robotframework-appiumlibrary).
+Robotframework-ApplicationLibrary is a collection of libraries spanning Mobile and Windows Desktop (WinAppDriver) automation using [Robot Framework](https://github.com/robotframework/robotframework).
+These libraries are and extensions of the existing [AppiumLibrary](https://github.com/serhatbolsu/robotframework-appiumlibrary). ApplicationLibrary extends the functionality 
+of AppiumLibrary for Mobile app testing and adds support Windows desktop automation.
 
-Zoomba adds a significant amount of data validation support for REST and SOAP APIs, extends functionality for typical Web GUI automation, and
-extends AppiumLibrary functionality to support Windows desktop automation.
+In those course of our own automation as a team, we found that out-of-the-box AppiumLibrary did not fit our needs for mobile testing and needed major rework inorder to get it working with WinAppDriver for Desktop testing.
+Originally this code was a part of [RobotFramework-Zoomba](https://github.com/Accruent/robotframework-zoomba) but diverging dependency requirements lead to a need for two separate repositories.
 
-As a team beginning the journey of automation with Robot Framework - we found that there was some time spent ramping up our libraries and robotframework-applicationlibrary aims to make that process easier for new projects.
-
-See the **Keyword Documentation** for the [API](https://accruent.github.io/robotframework-applicationlibrary/APILibraryDocumentation.html), [SOAP](https://accruent.github.io/robotframework-applicationlibrary/SOAPLibraryDocumentation.html),
-[GUI](https://accruent.github.io/robotframework-applicationlibrary/GUILibraryDocumentation.html), [Mobile](https://accruent.github.io/robotframework-applicationlibrary/MobileLibraryDocumentation.html), or [Desktop](https://accruent.github.io/robotframework-applicationlibrary/DesktopLibraryDocumentation.html) library for more specific information about the functionality.
+See the **Keyword Documentation** for the [Mobile](https://accruent.github.io/robotframework-applicationlibrary/MobileLibraryDocumentation.html) or [Desktop](https://accruent.github.io/robotframework-applicationlibrary/DesktopLibraryDocumentation.html) libraries for more specific information about the functionality.
 
 Example tests can be found in the [samples directory](https://github.com/Accruent/robotframework-applicationlibrary/tree/master/samples).
 
 Some Features of the Library
 --------------
-#### [GUI Library](https://accruent.github.io/robotframework-applicationlibrary/GUILibraryDocumentation.html):
-When working with web pages of varying load times you probably find yourself running a lot of calls like so:
-```robotframework
-Wait Until Page Contains Element      locator
-Click Element                         locator
-```
-For ease of use we have combined a lot of these into simple one line keywords:
-```robotframework
-Wait For And Click Element      locator
-Wait For And Click Text         text
-Wait For And Select From List   list_locator    target_locator
-```
-Another keyword that is particularly useful is for when you are waiting for javascript to complete on a page before proceeding:
-```robotframework
-Wait For And Click Element       locator that leads to a new page with javascript     
-Wait Until Javascript Is Complete
-Wait For And Click Element       locator
-```
-
-#### [API Library](https://accruent.github.io/robotframework-applicationlibrary/APILibraryDocumentation.html):
-This library wraps the [requests library](https://github.com/bulkan/robotframework-requests) so we have created a set of keywords to easily allow users to make requests in a single keyword:
-```robotframework
-Call Get Request       ${headers_dictionary}    endpoint    query_string
-Call Post Request      ${headers_dictionary}    endpoint    query_string     ${data_payload}
-```
-
-After receiving your data we made it incredibly easy to validate it. [Validate Response Contains Expected Response](https://accruent.github.io/robotframework-applicationlibrary/APILibraryDocumentation.html#Validate%20Response%20Contains%20Expected%20Response) takes your received request and compares it to your expected data. If there are any errors found it will report line by line what they are.
-```robotframework
-Validate Response Contains Expected Response    ${json_actual_response}      ${json_expected_response}
-```
-If there is any mismatched data it will look something like this:
-```
-Key(s) Did Not Match:
-------------------
-Key: pear
-Expected: fish
-Actual: bird
-------------------
-Full List Breakdown:
-Expected: [{'apple': 'cat', 'banana': 'dog', 'pear': 'fish'}, {'apple': 'cat', 'banana': 'mice', 'pear': 'bird'}, {'apple': 'dog', 'banana': 'mice', 'pear': 'cat'}]
-Actual: [{'apple': 'cat', 'banana': 'dog', 'pear': 'bird'}]
-
-Please see differing value(s)
-```
-If you wanted to ignore a key such as the 'update_date' you would simply set the 'ignored_keys' variable to that key or a list of keys:
-```robotframework
-Validate Response Contains Expected Response    ${json_actual_response}      ${json_expected_response}      ignored_keys=update_date
-Validate Response Contains Expected Response    ${json_actual_response}      ${json_expected_response}      ignored_keys=${list_of_keys}
-```
-
 #### [Mobile Library](https://accruent.github.io/robotframework-applicationlibrary/MobileLibraryDocumentation.html):
-Extending the [AppiumLibrary](https://github.com/serhatbolsu/robotframework-appiumlibrary) we again add some quality of life 'Wait For And' type keywords:
+Extending the [AppiumLibrary](https://github.com/serhatbolsu/robotframework-appiumlibrary) we added some quality of life 'Wait For And' type keywords:
 ```robotframework
 Wait For And Click Element      locator
 Wait For And Click Text         text
 Wait Until Element Contains     locator     text
 ```
-There are of course additional features that have yet to be implemented in AppiumLibrary:
+As well as additional features that have yet to be implemented in AppiumLibrary:
 ```robotframework
 Drag and Drop      source_locator     target_locator
 Drag And Drop By Offset     locator    x_offset     y_offset
@@ -133,43 +80,38 @@ Selecting an element by an image file (Appium v1.18.0 and higher only):
 Wait For And Click Element     image=file.png
 ```
 
-For WebView2 applications we can now control both the application view and the Edge browser view:
+For WebView2 applications we can control both the application view and the Edge browser view:
 
 <a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/3010366/122806407-e4759700-d28f-11eb-8b72-779660606d9f.gif"><img src="https://user-images.githubusercontent.com/3010366/122806407-e4759700-d28f-11eb-8b72-779660606d9f.gif" alt="rbmzmun3cR" style="max-width:60%;"></a>
 
-An example of this [can be found in the samples directory](https://github.com/Accruent/robotframework-zoomba/blob/master/samples/WebView-DesktopTest.robot).
+With the split from [RobotFramework-Zoomba](https://github.com/Accruent/robotframework-zoomba), the support for this exact example won't work in this current code. An example of this [can be found in the samples directory for robotframework-zoomba version 2.14.3 or lower](https://github.com/Accruent/robotframework-zoomba/blob/2.14.3/samples/WebView-DesktopTest.robot).
 
 Getting Started
 ----------------
 
-The Zoomba library is easily installed using the [`setup.py`](https://github.com/Accruent/robotframework-zoomba/blob/master/setup.py) file in the home directory.
-Simply run the following command to install Zoomba and it's dependencies:
+The Application library is easily installed using the [`setup.py`](https://github.com/Accruent/robotframework-applicationlibrary/blob/master/setup.py) file in the home directory.
+Simply run the following command to install ApplicationLibrary and it's dependencies:
 
 ```python
-pip install robotframework-zoomba
+pip install robotframework-applicationlibrary
 ```
 
 If you decide to pull the repo locally to make contributions or just want to play around with the code
-you can install Zoomba by running the following from the *root directory*:
+you can install ApplicationLibrary by running the following from the *root directory*:
 ```python
 pip install .
 ```
 
-To access the keywords in the library simply add the following to your robot file settings (depending on what you need):
+or if you intend to run unit tests:
 ```python
-*** Settings ***
-Library    Zoomba.APILibrary
-Library    Zoomba.GUILibrary
-Library    Zoomba.SOAPLibrary
-Library    Zoomba.MobileLibrary
-Library    Zoomba.DesktopLibrary
+pip install .[testing]
 ```
 
-If you are using Microsoft Edge (Chromium version) you will need the following plugin and option set:
+To access the keywords in the library simply add the following to your robot file settings (depending on what you are testing):
 ```python
-Library    Zoomba.GUILibrary     plugins=Zoomba.Helpers.EdgePlugin
-
-Open Browser   https://www.google.com    browser=Edge     options=use_chromium=True
+*** Settings ***
+Library    ApplicationLibrary.MobileLibrary
+Library    ApplicationLibrary.DesktopLibrary
 ```
 
 Additional Setup Information
@@ -195,20 +137,20 @@ Make sure to [enable developer mode on your system](https://www.howtogeek.com/29
 
 Examples
 ------------
-Example tests can be found in the [samples directory](https://github.com/Accruent/robotframework-zoomba/tree/master/samples).
+Example tests can be found in the [samples directory](https://github.com/Accruent/robotframework-applicationlibrary/tree/master/samples).
 
-The [test directory](https://github.com/Accruent/robotframework-zoomba/tree/master/test) may also contain tests but be aware that these are used for testing releases and may not be as straight forward to use as the ones in the [samples directory](https://github.com/Accruent/robotframework-zoomba/tree/master/samples).
+The [test directory](https://github.com/Accruent/robotframework-applicationlibrary/tree/master/test) may also contain tests but be aware that these are used for testing releases and may not be as straight forward to use as the ones in the [samples directory](https://github.com/Accruent/robotframework-applicationlibrary/tree/master/samples).
 
 
 Contributing
 -----------------
 
-To make contributions please refer to the [CONTRIBUTING](https://github.com/Accruent/robotframework-zoomba/blob/master/CONTRIBUTING.rst) guidelines.
+To make contributions please refer to the [CONTRIBUTING](https://github.com/Accruent/robotframework-applicationlibrary/blob/master/CONTRIBUTING.rst) guidelines.
 
-See the [.githooks](https://github.com/Accruent/robotframework-zoomba/tree/master/.githooks) directory for scripts to help in development. 
+See the [.githooks](https://github.com/Accruent/robotframework-applicationlibrary/tree/master/.githooks) directory for scripts to help in development. 
 
 Support
 ---------------
 General Robot Framework questions should be directed to the [community forum](https://forum.robotframework.org/).
 
-For questions and issues specific to Zoomba please create an [issue](https://github.com/Accruent/robotframework-zoomba/issues) here on Github.
+For questions and issues specific to ApplicationLibrary please create an [issue](https://github.com/Accruent/robotframework-applicationlibrary/issues) here on Github.

@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation    Zoomba Mobile Library Tests. Requires Appium Server running on port 4723 with an Android device/emulator available.
-Library          Zoomba.MobileLibrary
+Documentation    ApplicationLibrary Mobile Library Tests. Requires Appium Server running on port 4723 with an Android device/emulator available.
+Library          ApplicationLibrary.MobileLibrary
 Suite Setup      Start App
 Test Setup       Reset App
 Suite Teardown   Close Application

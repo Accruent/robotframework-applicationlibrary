@@ -24,7 +24,7 @@ setup(name='robotframework-applicationlibrary',
       license='GPL-3.0',
       keywords='Robot Framework robot-framework selenium appium winappdriver appium robotframework'
                'desktop windows zoomba python robotframework-library appium-windows appiumlibrary'
-               'appium-mobile mobile',
+               'appium-mobile mobile applicationlibrary application app lib',
       platforms='any',
       install_requires=requirements,
       extras_require={

@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation     Zoomba Desktop Library Tests.
-Library           Zoomba.DesktopLibrary
+Documentation     ApplicationLibrary Desktop Library Tests.
+Library           ApplicationLibrary.DesktopLibrary
 Suite Setup       Start App
 Test Setup        Launch Application
 Test Teardown     Quit Application

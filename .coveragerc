@@ -1,0 +1,9 @@
+[run]
+include =
+    src/ApplicationLibrary/DesktopLibrary.py
+    src/ApplicationLibrary/MobileLibrary.py
+    src/ApplicationLibrary/Helpers/AppiumCommon.py
+omit =
+    src/Zoomba/Helpers/options.py
+    src/Zoomba/Helpers/chromeOptions.py
+    src/Zoomba/Helpers/EdgePlugin.py

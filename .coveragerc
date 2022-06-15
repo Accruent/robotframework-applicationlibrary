@@ -1,5 +1,5 @@
 [run]
-include = */src/*
+source = src
 omit =
     src/Zoomba/Helpers/options.py
     src/Zoomba/Helpers/chromeOptions.py

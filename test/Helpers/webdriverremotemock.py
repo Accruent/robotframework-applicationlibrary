@@ -1,4 +1,4 @@
-# Taken from robotframework-appiumlibrary
+# Code from robotframework-appiumlibrary for mocking the webdriver
 
 import logging
 import sys

@@ -1,5 +1,3 @@
 [run]
 source =
-    */src/ApplicationLibrary/DesktopLibrary.py
-    */src/ApplicationLibrary/MobileLibrary.py
-    */src/ApplicationLibrary/Helpers/AppiumCommon.py
+    */src/*

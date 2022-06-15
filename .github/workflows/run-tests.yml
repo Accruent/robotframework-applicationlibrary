@@ -72,7 +72,7 @@ jobs:
 
       - name: Run Unit Tests
         run: |
-          pytest --cov=src -v
+          pytest --cov-config=.coveragerc -v
 
       - name: Coveralls
         env:

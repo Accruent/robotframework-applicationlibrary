@@ -3,9 +3,9 @@ contact_links:
   - name: 💬 General Robot Framework Support and Questions
     url: https://forum.robotframework.org/
     about: The Robot Framework Forum is a great place to ask general questions or get support on an issue.
-  - name: 📖 ApplicationLibrary Documentation
-    url: https://accruent.github.io/robotframework-zoomba/
+  - name: 📖 Application Library Documentation
+    url: https://accruent.github.io/robotframework-applicationlibrary/
     about: Links to keyword documentation as well as various feature examples.
-  - name: 📖 ApplicationLibrary Sample Code
-    url: https://github.com/Accruent/robotframework-zoomba/tree/master/samples
+  - name: 📖 Application Library Sample Code
+    url: https://github.com/Accruent/robotframework-applicationlibrary/tree/master/samples
     about: Sample code directory with examples of each library in action.

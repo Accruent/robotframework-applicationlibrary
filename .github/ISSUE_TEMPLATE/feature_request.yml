@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for taking the time to help us improve RobotFramework-Zoomba!
+        Thank you for taking the time to help us improve robotframework-applicationlibrary!
   - type: textarea
     id: feature-description
     attributes:
@@ -26,6 +26,6 @@ body:
       description: |
         How would you use this feature?
       placeholder: |
-        A clear example showing how this feature is useful for you and the RobotFramework-Zoomba community.
+        A clear example showing how this feature is useful for you and the robotframework-applicationlibrary community.
     validations:
       required: true

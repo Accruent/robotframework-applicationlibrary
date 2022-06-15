@@ -1,32 +1,32 @@
-RobotFramework-Zoomba
+robotframework-applicationlibrary
 ===========
-[![PyPI version](https://badge.fury.io/py/robotframework-zoomba.svg)](https://badge.fury.io/py/robotframework-zoomba)
-[![Downloads](https://pepy.tech/badge/robotframework-zoomba)](https://pepy.tech/project/robotframework-zoomba)
-[![Build Status](https://github.com/Accruent/robotframework-zoomba/workflows/tests/badge.svg?branch=master)](https://github.com/Accruent/robotframework-zoomba/actions?query=workflow%3Atests)
-[![Coverage Status](https://coveralls.io/repos/github/Accruent/robotframework-zoomba/badge.svg?branch=master)](https://coveralls.io/github/Accruent/robotframework-zoomba?branch=master)
-[![CodeFactor](https://www.codefactor.io/repository/github/accruent/robotframework-zoomba/badge)](https://www.codefactor.io/repository/github/accruent/robotframework-zoomba)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/Accruent/robotframework-zoomba.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Accruent/robotframework-zoomba/alerts/)
+[![PyPI version](https://badge.fury.io/py/robotframework-applicationlibrary.svg)](https://badge.fury.io/py/robotframework-applicationlibrary)
+[![Downloads](https://pepy.tech/badge/robotframework-applicationlibrary)](https://pepy.tech/project/robotframework-applicationlibrary)
+[![Build Status](https://github.com/Accruent/robotframework-applicationlibrary/workflows/tests/badge.svg?branch=master)](https://github.com/Accruent/robotframework-applicationlibrary/actions?query=workflow%3Atests)
+[![Coverage Status](https://coveralls.io/repos/github/Accruent/robotframework-applicationlibrary/badge.svg?branch=master)](https://coveralls.io/github/Accruent/robotframework-applicationlibrary?branch=master)
+[![CodeFactor](https://www.codefactor.io/repository/github/accruent/robotframework-applicationlibrary/badge)](https://www.codefactor.io/repository/github/accruent/robotframework-applicationlibrary)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/Accruent/robotframework-applicationlibrary.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Accruent/robotframework-applicationlibrary/alerts/)
 
 Introduction
 --------------
 
-Robotframework-Zoomba is a collection of libraries spanning GUI, REST API, SOAP API, Mobile, and Windows Desktop (WinAppDriver) automation using [Robot Framework](https://github.com/robotframework/robotframework).
+robotframework-applicationlibrary is a collection of libraries spanning GUI, REST API, SOAP API, Mobile, and Windows Desktop (WinAppDriver) automation using [Robot Framework](https://github.com/robotframework/robotframework).
 These libraries are extensions of existing libraries [SeleniumLibrary](https://github.com/robotframework/SeleniumLibrary), [Requests](https://github.com/bulkan/robotframework-requests), 
 [SudsLibrary](https://github.com/aljcalandra/robotframework-sudslibrary), and [AppiumLibrary](https://github.com/serhatbolsu/robotframework-appiumlibrary).
 
 Zoomba adds a significant amount of data validation support for REST and SOAP APIs, extends functionality for typical Web GUI automation, and
 extends AppiumLibrary functionality to support Windows desktop automation.
 
-As a team beginning the journey of automation with Robot Framework - we found that there was some time spent ramping up our libraries and Robotframework-Zoomba aims to make that process easier for new projects.
+As a team beginning the journey of automation with Robot Framework - we found that there was some time spent ramping up our libraries and robotframework-applicationlibrary aims to make that process easier for new projects.
 
-See the **Keyword Documentation** for the [API](https://accruent.github.io/robotframework-zoomba/APILibraryDocumentation.html), [SOAP](https://accruent.github.io/robotframework-zoomba/SOAPLibraryDocumentation.html),
-[GUI](https://accruent.github.io/robotframework-zoomba/GUILibraryDocumentation.html), [Mobile](https://accruent.github.io/robotframework-zoomba/MobileLibraryDocumentation.html), or [Desktop](https://accruent.github.io/robotframework-zoomba/DesktopLibraryDocumentation.html) library for more specific information about the functionality.
+See the **Keyword Documentation** for the [API](https://accruent.github.io/robotframework-applicationlibrary/APILibraryDocumentation.html), [SOAP](https://accruent.github.io/robotframework-applicationlibrary/SOAPLibraryDocumentation.html),
+[GUI](https://accruent.github.io/robotframework-applicationlibrary/GUILibraryDocumentation.html), [Mobile](https://accruent.github.io/robotframework-applicationlibrary/MobileLibraryDocumentation.html), or [Desktop](https://accruent.github.io/robotframework-applicationlibrary/DesktopLibraryDocumentation.html) library for more specific information about the functionality.
 
-Example tests can be found in the [samples directory](https://github.com/Accruent/robotframework-zoomba/tree/master/samples).
+Example tests can be found in the [samples directory](https://github.com/Accruent/robotframework-applicationlibrary/tree/master/samples).
 
 Some Features of the Library
 --------------
-#### [GUI Library](https://accruent.github.io/robotframework-zoomba/GUILibraryDocumentation.html):
+#### [GUI Library](https://accruent.github.io/robotframework-applicationlibrary/GUILibraryDocumentation.html):
 When working with web pages of varying load times you probably find yourself running a lot of calls like so:
 ```robotframework
 Wait Until Page Contains Element      locator
@@ -45,14 +45,14 @@ Wait Until Javascript Is Complete
 Wait For And Click Element       locator
 ```
 
-#### [API Library](https://accruent.github.io/robotframework-zoomba/APILibraryDocumentation.html):
+#### [API Library](https://accruent.github.io/robotframework-applicationlibrary/APILibraryDocumentation.html):
 This library wraps the [requests library](https://github.com/bulkan/robotframework-requests) so we have created a set of keywords to easily allow users to make requests in a single keyword:
 ```robotframework
 Call Get Request       ${headers_dictionary}    endpoint    query_string
 Call Post Request      ${headers_dictionary}    endpoint    query_string     ${data_payload}
 ```
 
-After receiving your data we made it incredibly easy to validate it. [Validate Response Contains Expected Response](https://accruent.github.io/robotframework-zoomba/APILibraryDocumentation.html#Validate%20Response%20Contains%20Expected%20Response) takes your received request and compares it to your expected data. If there are any errors found it will report line by line what they are.
+After receiving your data we made it incredibly easy to validate it. [Validate Response Contains Expected Response](https://accruent.github.io/robotframework-applicationlibrary/APILibraryDocumentation.html#Validate%20Response%20Contains%20Expected%20Response) takes your received request and compares it to your expected data. If there are any errors found it will report line by line what they are.
 ```robotframework
 Validate Response Contains Expected Response    ${json_actual_response}      ${json_expected_response}
 ```
@@ -76,7 +76,7 @@ Validate Response Contains Expected Response    ${json_actual_response}      ${j
 Validate Response Contains Expected Response    ${json_actual_response}      ${json_expected_response}      ignored_keys=${list_of_keys}
 ```
 
-#### [Mobile Library](https://accruent.github.io/robotframework-zoomba/MobileLibraryDocumentation.html):
+#### [Mobile Library](https://accruent.github.io/robotframework-applicationlibrary/MobileLibraryDocumentation.html):
 Extending the [AppiumLibrary](https://github.com/serhatbolsu/robotframework-appiumlibrary) we again add some quality of life 'Wait For And' type keywords:
 ```robotframework
 Wait For And Click Element      locator
@@ -91,8 +91,8 @@ Scroll Down To Text       text
 Scroll Up To Text         text
 ```
 
-#### [Desktop Library](https://accruent.github.io/robotframework-zoomba/DesktopLibraryDocumentation.html):
-Also extends [AppiumLibrary](https://github.com/serhatbolsu/robotframework-appiumlibrary) to tailor it Windows desktop automation. This includes enhancements to base keywords such as [Open Application](https://accruent.github.io/robotframework-zoomba/DesktopLibraryDocumentation.html#Open%20Application) or [Click Element](https://accruent.github.io/robotframework-zoomba/DesktopLibraryDocumentation.html#Click%20Element) to perform better for windows. Other notable additions include:
+#### [Desktop Library](https://accruent.github.io/robotframework-applicationlibrary/DesktopLibraryDocumentation.html):
+Also extends [AppiumLibrary](https://github.com/serhatbolsu/robotframework-appiumlibrary) to tailor it Windows desktop automation. This includes enhancements to base keywords such as [Open Application](https://accruent.github.io/robotframework-applicationlibrary/DesktopLibraryDocumentation.html#Open%20Application) or [Click Element](https://accruent.github.io/robotframework-applicationlibrary/DesktopLibraryDocumentation.html#Click%20Element) to perform better for windows. Other notable additions include:
 
 Start and Stop the WinAppDriver as needed (best used for suite setup/teardown):
 ```robotframework

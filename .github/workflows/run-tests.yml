@@ -1,0 +1,143 @@
+name: tests
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  upload-demo-apps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v2.4.2
+      - shell: bash
+        env:
+          SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
+          SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
+          working-directory: test/Helpers
+        working-directory: ${{env.working-directory}}
+        run: |
+          curl -F "payload=@./demo_app.apk" -F name=demo_app.apk -u "$SAUCE_USERNAME":"$SAUCE_ACCESS_KEY" "https://api.us-west-1.saucelabs.com/v1/storage/upload"
+
+  run-tests-edge:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        python-version: [ 3.7, 3.8, 3.9, '3.10' ]
+    steps:
+      - uses: actions/checkout@v2.4.2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4.0.0
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install .
+
+      - name: Run Edge Robot Tests
+        uses: nick-fields/retry@v2.7.0
+        with:
+          timeout_minutes: 45
+          max_attempts: 10
+          command: robot -i Edge test
+          new_command_on_retry: sleep 30; robot --rerunfailed "output.xml" -i Edge test
+
+  run-tests-chrome:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ 3.7, 3.8, 3.9, '3.10' ]
+        include:
+          - os: ubuntu-latest
+            set_display: export DISPLAY=:99; Xvfb :99 -screen 0 1024x768x24 -ac -noreset & sleep 3
+    steps:
+      - uses: actions/checkout@v2.4.2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4.0.0
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install .
+          pip install mock
+          sudo apt-get update
+          sudo apt-get -y -q install xvfb scrot zip curl libxml2-dev libxslt1-dev
+
+      - name: Run Chrome Robot Tests
+        uses: nick-fields/retry@v2.7.0
+        with:
+          timeout_minutes: 45
+          max_attempts: 3
+          command: |
+            ${{ matrix.set_display }}
+            robot --randomize suites -e BrokenORWindowsOREdgeORMobile test
+          new_command_on_retry: |
+            ${{ matrix.set_display }}
+            robot --rerunfailed "output.xml" -e BrokenORWindowsOREdgeORMobile test
+
+  run-tests-mobile:
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+          python-version: [ 3.7, 3.8, 3.9, '3.10' ]
+    steps:
+      - uses: actions/checkout@v2.4.2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4.0.0
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install .
+          pip install mock
+          sudo apt-get update
+
+      - name: Run Mobile Robot Tests
+        uses: nick-fields/retry@v2.7.0
+        with:
+          timeout_minutes: 45
+          max_attempts: 3
+          command: robot --randomize suites -i Mobile -e BrokenORWindowsOREdge -v sauce_username:${{ secrets.SAUCE_USERNAME }} -v sauce_key:${{ secrets.SAUCE_ACCESS_KEY }} -v GITHUB_RUN_NUMBER:Github.ApplicationLibrary.$GITHUB_RUN_NUMBER test
+          new_command_on_retry: robot --rerunfailedsuites "output.xml" -i Mobile -e BrokenORWindowsOREdge -v sauce_username:${{ secrets.SAUCE_USERNAME }} -v sauce_key:${{ secrets.SAUCE_ACCESS_KEY }} -v GITHUB_RUN_NUMBER:Github.ApplicationLibrary.$GITHUB_RUN_NUMBER test
+
+  run-tests-unit:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ 3.7, 3.8, 3.9, '3.10' ]
+    steps:
+      - uses: actions/checkout@v2.4.2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4.0.0
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install .
+          pip install coveralls mock pytest-cov
+          sudo apt-get update
+
+      - name: Run Unit Tests
+        run: |
+          pytest --cov=src -v
+
+      - name: Coveralls
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_token }}
+          flag-name: run-${{ matrix.python-version }}
+          parallel: true
+        run: |
+          coveralls --service=github

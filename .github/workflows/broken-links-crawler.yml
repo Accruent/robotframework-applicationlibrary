@@ -1,0 +1,20 @@
+name: Broken Links Crawler
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  linkChecker:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Link Checker
+      id: lc
+      uses: peter-evans/link-checker@v1
+      with:
+        args: --exclude github.com -v -r *
+    - name: Fail if there were link errors
+      run: exit ${{ steps.lc.outputs.exit_code }}

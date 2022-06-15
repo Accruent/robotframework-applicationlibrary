@@ -1,0 +1,20 @@
+# IntelliJ project files
+.idea
+MANIFEST
+
+.cache/*
+build/*
+dist/*
+src/ApplicationLibrary/__pycache__/*
+src/robotframework_applicationlibrary.egg-info/PKG-INFO
+*.pyc
+test/*/*.html
+test/*/*.xml
+*.log
+*.png
+src/ApplicationLibrary.egg-info/*
+src/robotframework_applicationlibrary.egg-info/*
+.vscode/*
+log.html
+output.xml
+report.html

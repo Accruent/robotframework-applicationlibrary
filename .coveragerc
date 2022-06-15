@@ -1,6 +1,2 @@
 [run]
 source = src
-omit =
-    src/Zoomba/Helpers/options.py
-    src/Zoomba/Helpers/chromeOptions.py
-    src/Zoomba/Helpers/EdgePlugin.py

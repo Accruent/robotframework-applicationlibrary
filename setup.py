@@ -15,7 +15,7 @@ with open('requirements.txt') as f:
 
 setup(name='robotframework-applicationlibrary',
       version=version.VERSION,
-      description='Robot Framework mini-framework.',
+      description='Robot Framework framework for mobile and desktop testing.',
       long_description=long_description,
       long_description_content_type='text/markdown',
       url='https://github.com/Accruent/robotframework-applicationlibrary',

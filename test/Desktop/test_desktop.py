@@ -866,7 +866,7 @@ class TestInternal(unittest.TestCase):
     @patch("selenium.webdriver.common.touch_actions.TouchActions.double_tap")
     def test_double_tap(self, double_tap):
         mock_desk = MagicMock()
-        DesktopLibrary.double_tap(mock_desk,  "some_locator")
+        DesktopLibrary.double_tap(mock_desk, "some_locator")
         double_tap.assert_called_with(unittest.mock.ANY)
 
     @patch("selenium.webdriver.common.touch_actions.TouchActions.double_tap")

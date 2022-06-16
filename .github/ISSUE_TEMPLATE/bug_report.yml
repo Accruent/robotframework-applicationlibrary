@@ -41,6 +41,6 @@ body:
     attributes:
       label: RobotFramework-ApplicationLibrary version (tag)
       description: What version of RobotFramework-ApplicationLibrary are you using?
-      placeholder: 2.13.1? Please use the full tag, avoid "latest"
+      placeholder: 1.0.1? Please use the full tag, avoid "latest"
     validations:
       required: true

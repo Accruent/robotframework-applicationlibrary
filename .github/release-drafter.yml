@@ -1,6 +1,6 @@
 categories:
   - title: '🚀 Features'
-    labels: 
+    labels:
       - 'feature'
       - 'enhancement'
   - title: '🐛 Bug Fixes'
@@ -9,7 +9,7 @@ categories:
       - 'bugfix'
       - 'bug'
   - title: '🧰 Maintenance'
-    labels: 
+    labels:
       - 'dependencies'
       - 'maintenance'
       - 'docs'
@@ -19,4 +19,3 @@ categories:
 template: |
   ## What’s Changed
   $CHANGES
-  

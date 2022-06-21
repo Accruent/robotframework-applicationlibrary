@@ -14,7 +14,7 @@ Robotframework-ApplicationLibrary is a collection of libraries spanning Mobile a
 These libraries are and extensions of the existing [AppiumLibrary](https://github.com/serhatbolsu/robotframework-appiumlibrary). ApplicationLibrary extends the functionality 
 of AppiumLibrary for Mobile app testing and adds support Windows desktop automation.
 
-In those course of our own automation as a team, we found that out-of-the-box AppiumLibrary did not fit our needs for mobile testing and needed major rework inorder to get it working with WinAppDriver for Desktop testing.
+In the course of our own automation as a team, we found that out-of-the-box AppiumLibrary did not fit our needs for mobile testing and needed major rework inorder to get it working with WinAppDriver for Desktop testing.
 Originally this code was a part of [RobotFramework-Zoomba](https://github.com/Accruent/robotframework-zoomba) but diverging dependency requirements lead to a need for two separate repositories.
 
 See the **Keyword Documentation** for the [Mobile](https://accruent.github.io/robotframework-applicationlibrary/MobileLibraryDocumentation.html) or [Desktop](https://accruent.github.io/robotframework-applicationlibrary/DesktopLibraryDocumentation.html) libraries for more specific information about the functionality.

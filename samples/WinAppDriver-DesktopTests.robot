@@ -186,6 +186,10 @@ Switch Application By Name or Locator
     # Switch back to the main window to make sure it gets closed
     Switch Application    Main
 
+Working Directory Test
+    [Setup]     Open Application    ${REMOTE_URL}     platformName=Windows    deviceName=Windows   app=${Notepad}     appWorkingDir=C:/Windows/System32
+    Switch Application By Name       ${REMOTE_URL}     Notepad    exact_match=False    appWorkingDir=C:/Windows/System32
+
 Switch Application Multiple Desktop
     # Open Application creates a new desktop session for this isnatnce, useful when running tests on multiple computers
     Open Application    ${REMOTE_URL}     platformName=Windows    deviceName=Windows   app=${Notepad}     alias=Notepad   desktop_alias=Desktop2

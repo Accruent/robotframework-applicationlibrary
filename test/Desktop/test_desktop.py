@@ -63,6 +63,13 @@ class TestInternal(unittest.TestCase):
         dl.open_application('remote_url')
         self.assertTrue(dl._cache.current)
 
+    def test_open_application_with_working_dir_successful(self):
+        dl = DesktopLibrary()
+        webdriver.Remote = WebdriverRemoteMock
+        self.assertFalse(dl._cache.current)
+        dl.open_application('remote_url', appWorkingDir='C:/Windows/System32')
+        self.assertTrue(dl._cache.current)
+
     def test_open_application_failure(self):
         dl = DesktopLibrary()
         dl._open_desktop_session = MagicMock()

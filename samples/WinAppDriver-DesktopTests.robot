@@ -187,7 +187,7 @@ Switch Application By Name or Locator
     Switch Application    Main
 
 Switch Application Multiple Desktop
-    # Open Application creates a new desktop session for this isnatnce, useful when running tests on multiple computers
+    # Open Application creates a new desktop session for this instance, useful when running tests on multiple computers
     Open Application    ${REMOTE_URL}     platformName=Windows    deviceName=Windows   app=${Notepad}     alias=Notepad   desktop_alias=Desktop2
     Switch Application    Desktop
     Switch Application    Desktop2
@@ -195,6 +195,10 @@ Switch Application Multiple Desktop
     Quit Application
     # Switch back to the main window to make sure it gets closed
     Switch Application    Main
+
+Working Directory Test
+    [Setup]     Open Application    ${REMOTE_URL}     platformName=Windows    deviceName=Windows   app=C:/Windows/notepad.exe     appWorkingDir=C:/Windows
+    Switch Application By Name       ${REMOTE_URL}     Notepad    exact_match=False    appWorkingDir=C:/Windows/System32
 
 Switch To Desktop Test
     [Setup]      Driver Setup

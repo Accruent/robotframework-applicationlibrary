@@ -78,7 +78,7 @@ class DesktopLibrary(AppiumLibrary):
 
     The ``image`` locator strategy can only be used with Appium v1.18.0 or higher.
 
-    Example tests using the windows calculator are located in the tests directory.
+    Example tests using the windows calculator and notepad are located in the tests directory.
 
     = Use of Wait Keywords =
 
@@ -257,6 +257,8 @@ class DesktopLibrary(AppiumLibrary):
         If your application has a splash screen please supply the window name of the final window that will appear.
         For the capabilities of appium server and Windows please check http://appium.io/docs/en/drivers/windows
 
+        Desired capabilities for WinAppDriver (platformName, appArguments, app, etc) can be found here: https://github.com/appium/appium-windows-driver#usage
+
         | *Option*            | *Man.* | *Description*                                                               |
         | remote_url          | Yes    | WinAppDriver or Appium server url                                           |
         | alias               | No     | Alias                                                                       |
@@ -353,6 +355,9 @@ class DesktopLibrary(AppiumLibrary):
         """Switches to a currently opened window by ``window_name``.
         For the capabilities of appium server and Windows,
         Please check http://appium.io/docs/en/drivers/windows
+
+        Desired capabilities for WinAppDriver (platformName, appArguments, app, etc) can be found here: https://github.com/appium/appium-windows-driver#usage
+
         | *Option*            | *Man.* | *Description*                         |
         | remote_url          | Yes    | WinAppDriver or Appium server url     |
         | window_name         | Yes    | Window name you wish to attach        |
@@ -422,6 +427,10 @@ class DesktopLibrary(AppiumLibrary):
 
          For the capabilities of appium server and Windows,
         Please check http://appium.io/docs/en/drivers/windows
+
+        Desired capabilities for WinAppDriver (platformName, appArguments, app, etc) can be found here: https://github.com/appium/appium-windows-driver#usage
+
+
         | *Option*            | *Man.* | *Description*                                 |
         | remote_url          | Yes    | WinAppDriver or Appium server url             |
         | locator             | Yes    | Locator for window name you wish to attach    |

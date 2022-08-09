@@ -44,7 +44,7 @@ jobs:
           sudo apt-get update
 
       - name: Run Mobile Robot Tests
-        uses: nick-fields/retry@v2.7.0
+        uses: nick-fields/retry@v2.8.1
         with:
           timeout_minutes: 45
           max_attempts: 3

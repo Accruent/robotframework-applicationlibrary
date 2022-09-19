@@ -51,6 +51,13 @@ jobs:
           command: robot --randomize suites -i Mobile -e BrokenORWindowsOREdge -v sauce_username:${{ secrets.SAUCE_USERNAME }} -v sauce_key:${{ secrets.SAUCE_ACCESS_KEY }} -v GITHUB_RUN_NUMBER:Github.ApplicationLibrary.$GITHUB_RUN_NUMBER test
           new_command_on_retry: robot --rerunfailedsuites "output.xml" -i Mobile -e BrokenORWindowsOREdge -v sauce_username:${{ secrets.SAUCE_USERNAME }} -v sauce_key:${{ secrets.SAUCE_ACCESS_KEY }} -v GITHUB_RUN_NUMBER:Github.ApplicationLibrary.$GITHUB_RUN_NUMBER test
 
+      - name: Upload test results
+        uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: reports
+          path: reports
+
   run-tests-unit:
     runs-on: ubuntu-latest
     strategy:
@@ -81,3 +88,20 @@ jobs:
           parallel: true
         run: |
           coveralls --service=github
+
+  generate_report:
+        if: always()
+        needs: [run-tests-mobile]
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+        - name: Download reportsChrome
+          uses: actions/download-artifact@v1
+          with:
+            name: reports
+            path: reports
+        - name: Send report to commit
+          uses: joonvena/robotframework-reporter-action@v2.1
+          with:
+            gh_access_token: ${{ secrets.GITHUB_TOKEN }}
+            show_passed_tests: false

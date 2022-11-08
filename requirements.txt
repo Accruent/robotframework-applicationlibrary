@@ -1,5 +1,5 @@
 robotframework==6.0.1
 selenium==3.141.0
-robotframework-appiumlibrary==1.6.4
+robotframework-appiumlibrary==2.0.0
 psutil==5.9.4
 Appium-Python-Client==1.3.0

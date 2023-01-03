@@ -5,7 +5,6 @@ robotframework-applicationlibrary
 [![Build Status](https://github.com/Accruent/robotframework-applicationlibrary/workflows/tests/badge.svg?branch=master)](https://github.com/Accruent/robotframework-applicationlibrary/actions?query=workflow%3Atests)
 [![Coverage Status](https://coveralls.io/repos/github/Accruent/robotframework-applicationlibrary/badge.svg?branch=master)](https://coveralls.io/github/Accruent/robotframework-applicationlibrary?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/accruent/robotframework-applicationlibrary/badge)](https://www.codefactor.io/repository/github/accruent/robotframework-applicationlibrary)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/Accruent/robotframework-applicationlibrary.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Accruent/robotframework-applicationlibrary/alerts/)
 
 Introduction
 --------------

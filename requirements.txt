@@ -1,4 +1,4 @@
-robotframework==6.0.1
+robotframework==6.0.2
 selenium==3.141.0
 robotframework-appiumlibrary==1.6.4
 psutil==5.9.4

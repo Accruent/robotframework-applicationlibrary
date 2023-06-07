@@ -48,7 +48,8 @@ jobs:
         with:
           timeout_minutes: 45
           max_attempts: 3
-          command: echo ${{ secrets.SAUCE_USERNAME }} && robot --randomize suites -i Mobile -e BrokenORWindowsOREdge -v sauce_username:${{ secrets.SAUCE_USERNAME }} -v sauce_key:${{ secrets.SAUCE_ACCESS_KEY }} -v GITHUB_RUN_NUMBER:Github.ApplicationLibrary.$GITHUB_RUN_NUMBER --output reports/output.xml test
+#          command: robot --randomize suites -i Mobile -e BrokenORWindowsOREdge -v sauce_username:${{ secrets.SAUCE_USERNAME }} -v sauce_key:${{ secrets.SAUCE_ACCESS_KEY }} -v GITHUB_RUN_NUMBER:Github.ApplicationLibrary.$GITHUB_RUN_NUMBER --output reports/output.xml test
+          command: robot --randomize suites -i Mobile -e BrokenORWindowsOREdge -v sauce_username:${{ secrets.SAUCE_USERNAME }} -v sauce_key:${{ secrets.SAUCE_ACCESS_KEY }} --output reports/output.xml test
           new_command_on_retry: robot --rerunfailedsuites "reports/output.xml" -i Mobile -e BrokenORWindowsOREdge -v sauce_username:${{ secrets.SAUCE_USERNAME }} -v sauce_key:${{ secrets.SAUCE_ACCESS_KEY }} -v GITHUB_RUN_NUMBER:Github.ApplicationLibrary.$GITHUB_RUN_NUMBER --output reports/output.xml test
 
       - name: Upload test results

@@ -6,7 +6,7 @@ Suite Teardown   Close Application
 Force Tags       Mobile
 
 *** Variables ***
-${REMOTE_URL}           http://ondemand.us-west-1.saucelabs.com/wd/hub
+${REMOTE_URL}           https://ondemand.us-west-1.saucelabs.com/wd/hub
 ${commandTimeout}=      120
 
 *** Keywords ***

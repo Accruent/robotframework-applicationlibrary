@@ -5,7 +5,7 @@ sys.path.append(os.path.join(os.path.dirname(sys.path[0])))
 import version
 
 print("Generating new documentation...")
-libraries = ['DesktopLibrary.py', 'MobileLibrary.py']
+libraries = ['MobileLibrary.py']
 curr_dir = os.path.dirname(os.path.realpath(__file__)).replace('docs', '')
 for file in libraries:
     libdoc.libdoc(curr_dir+'src/ApplicationLibrary/'+file, curr_dir+'docs/'+file.replace('.py', 'Documentation.html'),

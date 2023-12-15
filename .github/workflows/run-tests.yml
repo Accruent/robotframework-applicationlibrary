@@ -52,7 +52,7 @@ jobs:
           new_command_on_retry: robot --rerunfailedsuites "reports/output.xml" -i Mobile -e BrokenORWindowsOREdge -v sauce_username:${{ secrets.SAUCE_USERNAME }} -v sauce_key:${{ secrets.SAUCE_ACCESS_KEY }} -v GITHUB_RUN_NUMBER:Github.ApplicationLibrary.$GITHUB_RUN_NUMBER --output reports/output.xml test
 
       - name: Upload test results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: reports

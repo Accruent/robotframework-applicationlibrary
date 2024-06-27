@@ -6,6 +6,11 @@ robotframework-applicationlibrary
 [![Coverage Status](https://coveralls.io/repos/github/Accruent/robotframework-applicationlibrary/badge.svg?branch=master)](https://coveralls.io/github/Accruent/robotframework-applicationlibrary?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/accruent/robotframework-applicationlibrary/badge)](https://www.codefactor.io/repository/github/accruent/robotframework-applicationlibrary)
 
+Archive Note
+--------------
+WinAppDriver has been [abandonded by Microsoft for some time now](https://github.com/microsoft/WinAppDriver/issues/1550), leaving many users in the dark with no real reason to continue its use.
+
+
 Introduction
 --------------
 
